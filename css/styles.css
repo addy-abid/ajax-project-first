@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'get-schwifty';
+  src: url("../fonts/get_schwifty.ttf");
+}
+
+h2 {
+  font-family: 'get-schwifty', sans-serif;
+}
+
+.row {
+  display: flex;
+}
+
+.column-third {
+  width: calc(100 / 3);
+}
+
+.nav-bar {
+  background-color: #787878;
+}
