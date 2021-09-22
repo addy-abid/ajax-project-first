@@ -37,16 +37,15 @@ h2 {
   margin-right: auto;
 }
 
-label {
+.character-search {
   margin-top: 5rem;
-  margin-right: 11rem;
   font-family: 'roboto', sans-serif;
   display: block;
 }
 
 .search-box {
-  margin-top: 1rem;
-  width: 19rem;
+  margin-top: 0.5rem;
+  width: 16rem;
   padding-top: 5px;
 }
 
@@ -54,6 +53,8 @@ label {
   text-align: center;
   color: white;
   margin-top: 5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .back-ground {
@@ -62,8 +63,14 @@ label {
 
 img {
   display: block;
-  width: 80%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10rem;
+}
+
+.column-half {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
