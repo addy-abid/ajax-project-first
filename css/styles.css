@@ -18,3 +18,16 @@ h2 {
 .nav-bar {
   background-color: #787878;
 }
+
+.column-full {
+  width: 100%;
+}
+
+.search-bar {
+  text-align: center;
+  color: white;
+}
+
+.back-ground {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhLpoEJvsK9kL9VM7oTaN0KN9epBVIujfnzg&usqp=CAU);
+}
