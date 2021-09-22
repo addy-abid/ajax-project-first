@@ -46,7 +46,8 @@ label {
 
 .search-box {
   margin-top: 1rem;
-  padding: 0.5rem 5rem;
+  width: 19rem;
+  padding-top: 5px;
 }
 
 .search-bar {

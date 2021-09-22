@@ -16,4 +16,5 @@ function handleSubmit(event) {
   event.preventDefault();
   var name = document.querySelector('.search-box').value;
   getCharacterData(name);
+  $searchForm.reset();
 }
