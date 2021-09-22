@@ -8,11 +8,47 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
 </head>
 <body>
   <header>
+    <div class="nav-bar">
+      <div class="row">
+        <div class="column-third">
+          <h2>Ajax Project</h2>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
+    <div class="container back-ground">
+      <div data-view="home">
+        <form id="home">
+          <div class="row">
+            <div class="column-full">
+              <div class="column-half">
+              <div class="search-bar">
+              <label for="search" class="character-search">Search a character</label>
+              <input
+              class="search-box"
+              required
+              name="search"
+              type="text"
+              id="search">
+              <button class="search-button">Search</button>
+              </div>
+              </div>
+              <div class="portal">
+                <img src="images/po.png" class="portal-image">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
