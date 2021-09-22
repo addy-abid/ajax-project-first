@@ -5,6 +5,8 @@
 
 h2 {
   font-family: 'get-schwifty', sans-serif;
+  margin-left: 3rem;
+  color: white;
 }
 
 .row {
@@ -23,11 +25,40 @@ h2 {
   width: 100%;
 }
 
+.search-button {
+  padding: 1rem 5rem;
+  margin-top: 2rem;
+  color: white;
+  background-color: rgb(150, 224, 114);
+  border-radius: 2px;
+  border: 1px;
+}
+
+label {
+  margin-top: 5rem;
+  margin-right: 11rem;
+  font-family: 'roboto', sans-serif;
+}
+
+.search-box {
+  margin-top: 1rem;
+  padding: 0.5rem 5rem;
+}
+
 .search-bar {
   text-align: center;
   color: white;
+  margin-top: 5rem;
 }
 
 .back-ground {
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhLpoEJvsK9kL9VM7oTaN0KN9epBVIujfnzg&usqp=CAU);
+}
+
+img {
+  display: block;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10rem;
 }
