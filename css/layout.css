@@ -2,4 +2,8 @@
   .portal-image {
     width: 50%;
   }
+
+  .column-half {
+    width: 50%;
+  }
 }

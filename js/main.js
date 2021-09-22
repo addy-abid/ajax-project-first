@@ -24,3 +24,5 @@ function getRandom(max) {
 }
 getRandom();
 console.log(getRandom);
+
+var $randomButton = document.querySelector('.random-button');
