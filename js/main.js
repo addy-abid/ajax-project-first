@@ -18,3 +18,9 @@ function handleSubmit(event) {
   getCharacterData(name);
   $searchForm.reset();
 }
+function getRandom(max) {
+  var random = Math.floor(Math.random() * max);
+  return random;
+}
+getRandom();
+console.log(getRandom);
