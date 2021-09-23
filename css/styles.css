@@ -9,6 +9,18 @@ h2 {
   color: white;
 }
 
+.char-info-text {
+  font-family: 'roboto', sans-serif;
+  color: white;
+  margin-left: 2rem;
+}
+
+span {
+  font-family: 'roboto', sans-serif;
+  font-size: 0.8em;
+  font-weight: 100;
+}
+
 .nav-bar {
   background-color: #787878;
 }
