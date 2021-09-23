@@ -24,12 +24,10 @@ var id = document.querySelector('.random-button');
 id.addEventListener('click', submitRandom);
 
 function submitRandom(event) {
-  if (event) {
-    id = Math.floor(Math.random() * 672);
-  }
-
+  id = Math.floor(Math.random() * 672);
   getRandomChar(id);
 }
+
 function getRandomChar(id) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://rickandmortyapi.com/api/character/' + id);
