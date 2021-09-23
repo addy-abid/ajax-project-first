@@ -25,8 +25,21 @@ span {
   background-color: #787878;
 }
 
+.col-25 {
+  width: 25%;
+}
+
 .column-full {
   width: 100%;
+}
+
+.background-gray {
+  background-color: #787878;
+}
+
+.result-img {
+  margin-top: 0;
+  margin-left: 0;
 }
 
 .character-search {

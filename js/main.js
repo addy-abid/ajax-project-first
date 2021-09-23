@@ -39,3 +39,35 @@ function getRandomChar(id) {
   });
   xhr.send();
 }
+
+function renderResults(search) {
+  var resultsDiv = document.createElement('div');
+  resultsDiv.setAttribute('data-view', 'results');
+
+  var position = document.querySelector('.container');
+  position.appendChild(resultsDiv);
+
+  var row = document.createElement('div');
+  row.setAttribute('class', 'row margin-top background-gray width-80 border');
+  resultsDiv.appendChild(row);
+
+  var col25 = document.createElement('div');
+  col25.setAttribute('class', 'col-25');
+  resultsDiv.appendChild(col25);
+
+  var resultsImg = document.createElement('img');
+  resultsImg.setAttribute('src', getCharacterData(name));
+  resultsImg.setAttribute('class', 'result-img');
+  col25.appendChild(resultsImg);
+
+  var col75 = document.createElement('div');
+  col75.setAttribute('class', 'col-75');
+  row.appendChild(col75);
+
+  var $h2 = document.createElement('h2');
+  $h2.setAttribute('class', 'char-info-text');
+  col75.appendChild($h2);
+
+  return resultsDiv;
+
+}
