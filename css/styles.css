@@ -9,12 +9,41 @@ h2 {
   color: white;
 }
 
+.char-info-text {
+  font-family: 'roboto', sans-serif;
+  color: white;
+  margin-left: 2rem;
+}
+
+span {
+  font-family: 'roboto', sans-serif;
+  font-size: 0.8em;
+  font-weight: 100;
+}
+
 .nav-bar {
   background-color: #787878;
 }
 
+.hidden {
+  display: none;
+}
+
+.col-25 {
+  width: 25%;
+}
+
 .column-full {
   width: 100%;
+}
+
+.background-gray {
+  background-color: #787878;
+}
+
+.result-img {
+  margin-top: 0;
+  margin-left: 0;
 }
 
 .character-search {
@@ -27,6 +56,7 @@ h2 {
   margin-top: 0.5rem;
   width: 16rem;
   padding-top: 5px;
+  border-radius: 5px;
 }
 
 .search-bar {
@@ -37,6 +67,7 @@ h2 {
 
 .back-ground {
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhLpoEJvsK9kL9VM7oTaN0KN9epBVIujfnzg&usqp=CAU);
+  height: 105%;
 }
 
 img {
