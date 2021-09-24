@@ -25,6 +25,10 @@ span {
   background-color: #787878;
 }
 
+.hidden {
+  display: none;
+}
+
 .col-25 {
   width: 25%;
 }

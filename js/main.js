@@ -19,6 +19,7 @@ function getCharacterData(name) {
 }
 
 function handleSubmit(event) {
+  $searchForm.classList.add('hidden');
   event.preventDefault();
   var name = document.querySelector('.search-box').value;
   getCharacterData(name);
