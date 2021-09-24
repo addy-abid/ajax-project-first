@@ -16,9 +16,16 @@ function getCharacterData(name) {
     console.log(xhr.status);
     console.log(xhr.response);
     var matchingCharacters = xhr.response.results;
+
     var position = document.querySelector('.container');
     for (var i = 0; i < matchingCharacters.length; i++) {
       position.appendChild(renderResults(matchingCharacters[i]));
+      var viewList = document.querySelector('.col-75');
+      console.log('value of viewList: ', viewList);
+      viewList.addEventListener('click', resultsClick);
+      console.log(matchingCharacters[i]);
+      position.appendChild(renderCharacterCard(matchingCharacters[i]));
+
     }
   });
   xhr.send();
@@ -30,9 +37,15 @@ function handleSubmit(event) {
   event.preventDefault();
   var name = document.querySelector('.search-box').value;
   getCharacterData(name);
+  getEpisodeData(name);
   $searchForm.reset();
 }
-
+function resultsClick(event) {
+  // var container = document.querySelector('.container');
+  // container.classList.add('hidden');
+  console.log(event.target);
+  console.log('clicked');
+}
 var id = document.querySelector('.random-button');
 id.addEventListener('click', submitRandom);
 
@@ -52,9 +65,15 @@ function getRandomChar(id) {
     console.log(xhr.status);
     console.log(xhr.response);
     var matchingCharacters = xhr.response;
-    var position = document.querySelector('.container');
 
+    var position = document.querySelector('.container');
     position.appendChild(renderResults(matchingCharacters));
+
+    var viewList = document.querySelector('.col-75');
+    console.log('value of viewList: ', viewList);
+    viewList.addEventListener('click', resultsClick);
+
+    position.appendChild(renderCharacterCard(matchingCharacters));
 
   });
   xhr.send();
@@ -93,6 +112,10 @@ function renderResults(search) {
 function retunHomePage(event) {
   $searchForm.classList.remove('hidden');
   $body.classList.replace('body-container-vh', 'body-container');
+  var chars = document.querySelector('.border');
+  var card = document.querySelector('#card');
+  card.classList.add('hidden');
+  chars.classList.add('hidden');
 
 }
 /* <div class="row margin-top background-gray width-80 border">
@@ -118,6 +141,7 @@ function renderCharacterCard(card) {
 
   var divRow = document.createElement('div');
   divRow.setAttribute('class', 'row margin-top background-gray width-80 border');
+  divRow.setAttribute('id', 'card');
   cardView.appendChild(divRow);
 
   var colHalfFirst = document.createElement('div');
@@ -126,6 +150,7 @@ function renderCharacterCard(card) {
 
   var cardImg = document.createElement('img');
   cardImg.setAttribute('src', card.image);
+  cardImg.setAttribute('class', 'result-img-card');
   colHalfFirst.appendChild(cardImg);
 
   var colHalfSec = document.createElement('div');
@@ -139,30 +164,24 @@ function renderCharacterCard(card) {
 
   var charLocation = document.createElement('h2');
   charLocation.setAttribute('class', 'char-info-text');
-  charLocation.textContent = 'location: ';
+  charLocation.textContent = 'location: ' + card.location.name;
   colHalfSec.appendChild(charLocation);
 
-  var $spanLocation = document.createElement('span');
-  $spanLocation.textContent = card.location.name;
-  charLocation.appendChild($spanLocation);
-
   var charStatus = document.createElement('h2');
-  charLocation.setAttribute('class', 'char-info-text');
-  charLocation.textContent = 'Status: ';
+  charStatus.setAttribute('class', 'char-info-text');
+  charStatus.textContent = 'Status: ' + card.status;
   colHalfSec.appendChild(charStatus);
 
-  var $spanStatus = document.createElement('span');
-  $spanStatus.textContent = card.status;
-  charStatus.appendChild($spanStatus);
-
   var charEpisode = document.createElement('h2');
-  charStatus.setAttribute('class', 'char-info-text');
-  charStatus.textContent = 'Episodes: ';
-  colHalfSec.appendChild(charEpisode);
-
-  var episodes = document.createElement('p');
-  episodes.setAttribute('class', 'char-info-text');
-  colHalfSec.appendChild(episodes);
-
+  charEpisode.setAttribute('class', 'char-info-text');
+  charEpisode.textContent = 'Episode: ' + card.episode[0];
+  colHalfSec.append(charEpisode);
   return cardView;
 }
+
+/*
+clicking the result list to show card info
+if a result is click,
+hide the container
+and show the card view
+*/
