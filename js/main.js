@@ -9,6 +9,11 @@ function getCharacterData(name) {
 
     console.log(xhr.status);
     console.log(xhr.response);
+    var matchingCharacters = xhr.response.results;
+    var position = document.querySelector('.container');
+    for (var i = 0; i < matchingCharacters.length; i++) {
+      position.appendChild(renderResults(matchingCharacters[i]));
+    }
   });
   xhr.send();
 }
@@ -36,6 +41,7 @@ function getRandomChar(id) {
 
     console.log(xhr.status);
     console.log(xhr.response);
+
   });
   xhr.send();
 }
@@ -44,19 +50,16 @@ function renderResults(search) {
   var resultsDiv = document.createElement('div');
   resultsDiv.setAttribute('data-view', 'results');
 
-  var position = document.querySelector('.container');
-  position.appendChild(resultsDiv);
-
   var row = document.createElement('div');
   row.setAttribute('class', 'row margin-top background-gray width-80 border');
   resultsDiv.appendChild(row);
 
   var col25 = document.createElement('div');
   col25.setAttribute('class', 'col-25');
-  resultsDiv.appendChild(col25);
+  row.appendChild(col25);
 
   var resultsImg = document.createElement('img');
-  resultsImg.setAttribute('src', getCharacterData(name));
+  resultsImg.setAttribute('src', search.image);
   resultsImg.setAttribute('class', 'result-img');
   col25.appendChild(resultsImg);
 
@@ -66,6 +69,7 @@ function renderResults(search) {
 
   var $h2 = document.createElement('h2');
   $h2.setAttribute('class', 'char-info-text');
+  $h2.textContent = search.name;
   col75.appendChild($h2);
 
   return resultsDiv;

@@ -52,6 +52,7 @@ span {
   margin-top: 0.5rem;
   width: 16rem;
   padding-top: 5px;
+  border-radius: 5px;
 }
 
 .search-bar {
