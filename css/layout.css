@@ -1,9 +1,28 @@
+.body-container {
+  height: 100%;
+}
+
+.body-container-vh {
+  height: 100vh;
+}
+
+.home-page:hover {
+  cursor: pointer;
+}
+
 .column-half {
   width: 100%;
 }
 
 .col-50 {
   width: 100%;
+}
+
+.col-75 {
+  width: 75%;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
 }
 
 .search-button {
@@ -24,11 +43,15 @@
 }
 
 .margin-top {
-  margin-top: 5rem;
+  margin-top: 2rem;
+}
+
+.margin-top-half {
+  margin-top: 2rem;
 }
 
 .width-80 {
-  width: 80%;
+  width: 90%;
   background-color: #787878;
   margin-left: auto;
   margin-right: auto;
@@ -57,11 +80,11 @@
 }
 
 .column-third {
-  width: calc(100 / 3);
+  width: calc(100% / 3);
 }
 
 .portal-image {
-  animation: rotation 20s infinite linear;
+  animation: rotation 100s infinite linear;
 }
 
 @keyframes rotation {

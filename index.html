@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJAX Project</title>
+  <title>Ajax Project</title>
   <link rel="icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -14,18 +14,27 @@
 
 </head>
 <body>
+  <div class="body-container" id="body-container">
+  <div class="back-ground">
   <header>
     <div class="nav-bar">
       <div class="row">
         <div class="column-third">
-          <h2>Ajax Project</h2>
+          <h2>Meseeks</h2>
+        </div>
+        <div class="column-third">
+          <h2>Favorites</h2>
+        </div>
+        <div class="column-third">
+          <h2 class="home-page">Home</h2>
         </div>
       </div>
     </div>
   </header>
   <main>
-    <div class="container back-ground">
-      <div data-view="home">
+    <div>
+     <div class="container">
+      <div data-view="home" class="home view">
         <form id="home">
           <div class="row">
             <div class="column-full">
@@ -52,11 +61,12 @@
             </div>
           </div>
         </form>
+        </div>
       </div>
-      <div data-view="results">
-        <div class="row margin-top width-80 border">
+      <div data-view="results" class="view">
+        <div class="row margin-top background-gray width-80 border">
           <div class="col-50">
-            <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" class="avatar-img border">
+            <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" class="result-img-card ">
           </div>
           <div class="col-50">
             <h1 class="char-info-text">Rick Sanchez</h1>
@@ -70,10 +80,14 @@
             <p class="char-info-text">..</p>
           </div>
         </div>
+
       </div>
     </div>
   </main>
+  </div>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
+
 </body>
 </html>
