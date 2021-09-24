@@ -1,3 +1,15 @@
+.body-container {
+  height: 100%;
+}
+
+.body-container-vh {
+  height: 100vh;
+}
+
+.home-page:hover {
+  cursor: pointer;
+}
+
 .column-half {
   width: 100%;
 }
@@ -31,7 +43,7 @@
 }
 
 .margin-top {
-  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .margin-top-half {
@@ -72,7 +84,7 @@
 }
 
 .portal-image {
-  animation: rotation 40s infinite linear;
+  animation: rotation 100s infinite linear;
 }
 
 @keyframes rotation {

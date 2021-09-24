@@ -1,6 +1,12 @@
+/* global data */
+/* exported data */
+
 var $searchForm = document.querySelector('#home');
 $searchForm.addEventListener('submit', handleSubmit);
-
+var mainPage = document.querySelector('.home');
+var $body = document.getElementById('body-container');
+var homePage = document.querySelector('.home-page');
+homePage.addEventListener('click', retunHomePage);
 function getCharacterData(name) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://rickandmortyapi.com/api/character/?name=' + name);
@@ -20,6 +26,7 @@ function getCharacterData(name) {
 
 function handleSubmit(event) {
   $searchForm.classList.add('hidden');
+  $body.classList.replace('body-container-vh', 'body-container');
   event.preventDefault();
   var name = document.querySelector('.search-box').value;
   getCharacterData(name);
@@ -35,6 +42,8 @@ function submitRandom(event) {
 }
 
 function getRandomChar(id) {
+  $body.classList.replace('body-container', 'body-container-vh');
+  $searchForm.classList.add('hidden');
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://rickandmortyapi.com/api/character/' + id);
   xhr.responseType = 'json';
@@ -42,6 +51,10 @@ function getRandomChar(id) {
 
     console.log(xhr.status);
     console.log(xhr.response);
+    var matchingCharacters = xhr.response;
+    var position = document.querySelector('.container');
+
+    position.appendChild(renderResults(matchingCharacters));
 
   });
   xhr.send();
@@ -74,5 +87,11 @@ function renderResults(search) {
   col75.appendChild($h2);
 
   return resultsDiv;
+
+}
+
+function retunHomePage(event) {
+  $searchForm.classList.remove('hidden');
+  $body.classList.replace('body-container-vh', 'body-container');
 
 }
