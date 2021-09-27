@@ -4,6 +4,7 @@
 var $searchForm = document.querySelector('#home');
 $searchForm.addEventListener('submit', handleSubmit);
 var mainPage = document.querySelector('.home');
+mainPage.addEventListener('click', handleViewNavigation);
 var $body = document.getElementById('body-container');
 var homePage = document.querySelector('.home-page');
 homePage.addEventListener('click', retunHomePage);
@@ -67,12 +68,6 @@ function getRandomChar(id) {
     var matchingCharacters = xhr.response;
 
     var position = document.querySelector('.container');
-    position.appendChild(renderResults(matchingCharacters));
-
-    var viewList = document.querySelector('.col-75');
-    console.log('value of viewList: ', viewList);
-    viewList.addEventListener('click', resultsClick);
-
     position.appendChild(renderCharacterCard(matchingCharacters));
 
   });
@@ -172,10 +167,21 @@ function renderCharacterCard(card) {
   charStatus.textContent = 'Status: ' + card.status;
   colHalfSec.appendChild(charStatus);
 
-  var charEpisode = document.createElement('h2');
-  charEpisode.setAttribute('class', 'char-info-text');
-  charEpisode.textContent = 'Episode: ' + card.episode[0];
-  colHalfSec.append(charEpisode);
+  var charSpecies = document.createElement('h2');
+  charSpecies.setAttribute('class', 'char-info-text');
+  charSpecies.textContent = 'Species: ' + card.species;
+  colHalfSec.append(charSpecies);
+
+  var charType = document.createElement('h2');
+  charType.setAttribute('class', 'char-info-text');
+  charType.textContent = 'Type: ' + card.type;
+  colHalfSec.appendChild(charType);
+
+  var charGender = document.createElement('h2');
+  charGender.setAttribute('class', 'char-info-text');
+  charGender.textContent = 'Gender: ' + card.gender;
+  colHalfSec.appendChild(charGender);
+
   return cardView;
 }
 
@@ -185,3 +191,21 @@ if a result is click,
 hide the container
 and show the card view
 */
+var $view = document.querySelectorAll('.view');
+function switchView(viewName) {
+  for (var i = 0; i < $view.length; i++) {
+    if ($view[i].getAttribute('data-view') === viewName) {
+      $view[i].className = 'active';
+    } else {
+      $view[i].className = 'hidden';
+    }
+  }
+  data.view = viewName;
+}
+function handleViewNavigation(event) {
+  if (event.target === mainPage) {
+    switchView('results');
+  } else {
+    switchView('home');
+  }
+}
