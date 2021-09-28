@@ -14,17 +14,13 @@ function getCharacterData(name) {
   xhr.responseType = 'json';
   xhr.addEventListener('load', function (name) {
 
-    console.log(xhr.status);
-    console.log(xhr.response);
     var matchingCharacters = xhr.response.results;
 
     var position = document.querySelector('.container');
     for (var i = 0; i < matchingCharacters.length; i++) {
       position.appendChild(renderResults(matchingCharacters[i]));
-      var viewList = document.querySelector('.col-75');
-      console.log('value of viewList: ', viewList);
+      var viewList = document.querySelector('.container');
       viewList.addEventListener('click', resultsClick);
-      console.log(matchingCharacters[i]);
       position.appendChild(renderCharacterCard(matchingCharacters[i]));
 
     }
@@ -38,14 +34,21 @@ function handleSubmit(event) {
   event.preventDefault();
   var name = document.querySelector('.search-box').value;
   getCharacterData(name);
-  getEpisodeData(name);
+
   $searchForm.reset();
 }
 function resultsClick(event) {
-  // var container = document.querySelector('.container');
-  // container.classList.add('hidden');
-  console.log(event.target);
-  console.log('clicked');
+  if (event.target.className === 'col-75' || event.target.closest('.col-75')) {
+    var id = event.target.closest('.result-page').id;
+
+    var row = document.getElementById(id);
+    row.classList.add('hidden');
+    var cardNumber = document.querySelector(`.card-${id}`);
+    cardNumber.classList.remove('hidden');
+    closeResults(id, data.openCard);
+    data.openCard = id;
+  }
+
 }
 var id = document.querySelector('.random-button');
 id.addEventListener('click', submitRandom);
@@ -61,25 +64,25 @@ function getRandomChar(id) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://rickandmortyapi.com/api/character/' + id);
   xhr.responseType = 'json';
-  xhr.addEventListener('load', function (id) {
-
-    console.log(xhr.status);
-    console.log(xhr.response);
+  xhr.addEventListener('load', function (event) {
     var matchingCharacters = xhr.response;
-
     var position = document.querySelector('.container');
     position.appendChild(renderCharacterCard(matchingCharacters));
-
+    var cardClass = '.card-' + id;
+    var card = document.querySelector(cardClass);
+    card.classList.remove('hidden');
   });
   xhr.send();
 }
 
 function renderResults(search) {
+
   var resultsDiv = document.createElement('div');
   resultsDiv.setAttribute('data-view', 'results');
 
   var row = document.createElement('div');
-  row.setAttribute('class', 'row margin-top background-gray width-80 border');
+  row.setAttribute('class', 'row margin-top background-gray width-80 border result-page');
+  row.id = search.id;
   resultsDiv.appendChild(row);
 
   var col25 = document.createElement('div');
@@ -108,35 +111,20 @@ function retunHomePage(event) {
   $searchForm.classList.remove('hidden');
   $body.classList.replace('body-container-vh', 'body-container');
   var chars = document.querySelector('.border');
-  var card = document.querySelector('#card');
+  var card = document.querySelector('.card');
   card.classList.add('hidden');
   chars.classList.add('hidden');
 
 }
-/* <div class="row margin-top background-gray width-80 border">
-    <div class="col-50">
-      <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" class="result-img-card ">
-    </div>
-    <div class="col-50">
-      <h1 class="char-info-text">Rick Sanchez</h1>
-      <h2 class="char-info-text">Location: <span>C-137</span></h2>
-      <h2 class="char-info-text">Status: <span>Alive</span></h2>
-      <h2 class="char-info-text">Episodes: </h2>
-      <p class="char-info-text">S - 01 E - 01</p>
-      <p class="char-info-text">S - 01 E - 02</p>
-      <p class="char-info-text">S - 01 E - 03</p>
-      <p class="char-info-text">S - 01 E - 04</p>
-      <p class="char-info-text">..</p>
-    </div>
-  </div> */
 
 function renderCharacterCard(card) {
   var cardView = document.createElement('div');
   cardView.setAttribute('data-view', 'card');
 
   var divRow = document.createElement('div');
-  divRow.setAttribute('class', 'row margin-top background-gray width-80 border');
-  divRow.setAttribute('id', 'card');
+  divRow.setAttribute('class', 'card hidden row margin-top background-gray width-80 border ');
+  divRow.classList.add(`card-${card.id}`);
+
   cardView.appendChild(divRow);
 
   var colHalfFirst = document.createElement('div');
@@ -185,12 +173,6 @@ function renderCharacterCard(card) {
   return cardView;
 }
 
-/*
-clicking the result list to show card info
-if a result is click,
-hide the container
-and show the card view
-*/
 var $view = document.querySelectorAll('.view');
 function switchView(viewName) {
   for (var i = 0; i < $view.length; i++) {
@@ -207,5 +189,23 @@ function handleViewNavigation(event) {
     switchView('results');
   } else {
     switchView('home');
+  }
+}
+
+function closeResults(cardId, oldId) {
+  var cards = document.querySelectorAll('.card');
+  var cardClass = 'card-' + cardId;
+
+  for (var i = 0; i < cards.length; i++) {
+
+    if (!cards[i].classList.contains(cardClass)) {
+
+      cards[i].classList.add('hidden');
+
+    }
+  }
+  if (data.openCard !== null) {
+    var row = document.getElementById(oldId);
+    row.classList.remove('hidden');
   }
 }
