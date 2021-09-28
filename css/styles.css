@@ -13,6 +13,7 @@ h2 {
   font-family: 'roboto', sans-serif;
   color: white;
   margin-left: 2rem;
+  margin-top: 2rem;
 }
 
 span {
@@ -44,6 +45,12 @@ span {
 .result-img {
   margin-top: 0;
   margin-left: 0;
+}
+
+.result-img-card {
+  margin-top: 0;
+  width: 100%;
+  border-top-left-radius: 5px;
 }
 
 .character-search {

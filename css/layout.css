@@ -83,7 +83,7 @@
   width: calc(100% / 3);
 }
 
-.portal-image {
+/* .portal-image {
   animation: rotation 100s infinite linear;
 }
 
@@ -95,7 +95,7 @@
   to {
     transform: rotate(359deg);
   }
-}
+} */
 
 @media screen and (min-width: 767px) {
   .portal-image {
